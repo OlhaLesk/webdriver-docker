@@ -1,0 +1,12 @@
+#FROM node:latest
+FROM node:10
+
+RUN npm install -g mocha --silent
+RUN npm install chai webdriverio --silent
+
+COPY e2e.js /
+# COPY wait-for-it.sh /
+# RUN chmod 755 /wait-for-it.sh
+
+CMD node e2e.js
+# CMD /wait-for-it.sh selenium:4444 -- /wait-for-it.sh app:3000 -- node /e2e.js
